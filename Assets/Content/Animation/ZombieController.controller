@@ -19,10 +19,10 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25000003
   m_TransitionOffset: 0
-  m_ExitTime: 0.043401536
+  m_ExitTime: 0.0022957316
   m_HasExitTime: 0
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!206 &-5260099146958861255
@@ -71,7 +71,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Z_FallingBack
+  m_Name: Zombie Death
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -177,7 +177,7 @@ AnimatorStateTransition:
   m_ExitTime: 0.79184663
   m_HasExitTime: 1
   m_HasFixedDuration: 1
-  m_InterruptionSource: 0
+  m_InterruptionSource: 2
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
 --- !u!1101 &1805773635600253490

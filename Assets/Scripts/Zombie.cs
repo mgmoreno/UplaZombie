@@ -24,6 +24,8 @@ public class Zombie : MonoBehaviour
     private Collider _collider;
     private Transform _target;
 
+    private bool _inDamage;
+
     private int AnimSpeed = Animator.StringToHash("Speed");
     private int AnimAttack = Animator.StringToHash("Attack");
     private int AnimDamage = Animator.StringToHash("Damage");
@@ -79,25 +81,36 @@ public class Zombie : MonoBehaviour
 
     private void OnDamage()
     {
+        if (_inDamage) 
+        {
+            return;
+        }
         StartCoroutine(OnDamageEffect());
     }
 
     private IEnumerator OnDamageEffect()
     {
+        _inDamage = true;
         if (!damageSound.isPlaying)
         {
             damageSound.Play();
         }
 
-        anim.SetBool(AnimDamage, true);       
-        float speed = _agent.speed;
-        _agent.speed = 0;
-        _agent.SetDestination(transform.position);
+        anim.SetBool(AnimDamage, true);
+        _agent.isStopped = true;
+
+        // Wait one frame to reset flag so we don't keep transitioning to damage animation
         yield return new WaitForEndOfFrame();
         anim.SetBool(AnimDamage, false);
 
         yield return new WaitForSeconds(1);
-        _agent.speed = speed;
+
+        // Only resume movement if zombie is still alive
+        if (health.IsAlive)
+        {            
+            _agent.isStopped = false;
+        }
+        _inDamage = false;
     }
 
     private void OnDeath()
@@ -113,7 +126,10 @@ public class Zombie : MonoBehaviour
         }
 
         anim.SetBool(AnimDeath, true);
-        _agent.enabled = false;
+        anim.SetBool(AnimDamage, false);
+        anim.SetFloat(AnimSpeed, 0);
+
+        _agent.isStopped = true;
         _collider.enabled = false;
         Destroy(gameObject, 2);
 
