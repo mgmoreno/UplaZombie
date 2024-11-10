@@ -13,7 +13,12 @@ public class Zombie : MonoBehaviour
 
     [Header("Properties")]
     [SerializeField] private float attackRange = 1.5f;
-    [SerializeField] private int attackDamage = 1;    
+    [SerializeField] private int attackDamage = 1;
+
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource attackSound;
+    [SerializeField] private AudioSource damageSound;
+    [SerializeField] private AudioSource deathSound;
 
     private NavMeshAgent _agent;
     private Transform _target;
@@ -56,6 +61,12 @@ public class Zombie : MonoBehaviour
         {
             anim.SetFloat(AnimSpeed, 0);
             anim.SetBool(AnimAttack, true);
+
+            if (!attackSound.isPlaying)
+            {
+                attackSound.Play();
+            }
+            
         }
         else
         {
@@ -71,7 +82,12 @@ public class Zombie : MonoBehaviour
 
     private IEnumerator OnDamageEffect()
     {
-        anim.SetBool(AnimDamage, true);
+        if (!damageSound.isPlaying)
+        {
+            damageSound.Play();
+        }
+
+        anim.SetBool(AnimDamage, true);       
         float speed = _agent.speed;
         _agent.speed = 0;
         _agent.SetDestination(transform.position);
@@ -84,6 +100,7 @@ public class Zombie : MonoBehaviour
 
     private void OnDeath()
     {
+        deathSound.Play();
         Destroy(gameObject);
     }
 
