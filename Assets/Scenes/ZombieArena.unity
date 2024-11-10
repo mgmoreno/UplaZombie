@@ -10430,6 +10430,7 @@ MonoBehaviour:
   gunSound: {fileID: 1257043802}
   animator: {fileID: 1257043803}
   impactPrefab: {fileID: 5024009746357069194, guid: ec3f674830402cc45bce805cf6493db7, type: 3}
+  cameraShake: {fileID: 787506514}
   fireMask:
     serializedVersion: 2
     m_Bits: 65

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class Gun : MonoBehaviour
     [SerializeField] private AudioSource gunSound;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject impactPrefab;
+    [SerializeField] private CinemachineImpulseSource cameraShake;
 
     [Header("Properties")]
     [SerializeField] private LayerMask fireMask;
@@ -53,6 +55,7 @@ public class Gun : MonoBehaviour
             gunSound.Play();
             animator.SetBool(AnimFire, true);
             muzzleFlash.Play();
+            cameraShake.GenerateImpulseWithVelocity(Random.onUnitSphere * Random.Range(0.02f, 0.04f));
             Shoot();
         }
     }
