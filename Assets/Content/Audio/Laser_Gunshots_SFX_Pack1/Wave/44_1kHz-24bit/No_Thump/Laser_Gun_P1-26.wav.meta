@@ -1,0 +1,30 @@
+fileFormatVersion: 2
+guid: 0948d0082a5f353499cc40518f42bf35
+AssetOrigin:
+  serializedVersion: 1
+  productId: 291966
+  packageName: 'LASER GUNSHOTS: SFX PACK1'
+  packageVersion: 1.0
+  assetPath: Assets/Laser_Gunshots_SFX_Pack1/Wave/44_1kHz-24bit/No_Thump/Laser_Gun_P1-26.wav
+  uploadId: 681790
+AudioImporter:
+  externalObjects: {}
+  serializedVersion: 8
+  defaultSettings:
+    serializedVersion: 2
+    loadType: 0
+    sampleRateSetting: 0
+    sampleRateOverride: 44100
+    compressionFormat: 1
+    quality: 1
+    conversionMode: 0
+    preloadAudioData: 0
+  platformSettingOverrides: {}
+  forceToMono: 0
+  normalize: 1
+  loadInBackground: 1
+  ambisonic: 0
+  3D: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
