@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private new Transform camera;
-    [SerializeField] private LayerMask fireMask;
-    [SerializeField] private int damage = 1;
     [SerializeField] private AudioSource gunSound;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject impactPrefab;
+
+    [Header("Properties")]
+    [SerializeField] private LayerMask fireMask;
+    [SerializeField] private int damage = 1;    
 
     private int AnimFire = Animator.StringToHash("Fire");
 

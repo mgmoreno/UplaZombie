@@ -5,12 +5,15 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Zombie : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField] private Animator anim;
-    [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private Hitbox hitbox;
-    [SerializeField] private int attackDamage = 1;
     [SerializeField] private ZombieAnimEvents animEvents;
     [SerializeField] private Health health;
+
+    [Header("Properties")]
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private int attackDamage = 1;    
 
     private NavMeshAgent _agent;
     private Transform _target;
@@ -43,8 +46,9 @@ public class Zombie : MonoBehaviour
     }
 
     private void Update()
-    {       
+    {    
         if (_target == null) { return; }
+        if (health.IsAlive == false) { return; }
 
         anim.SetBool(AnimAttack, false);
 

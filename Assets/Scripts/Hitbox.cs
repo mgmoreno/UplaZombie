@@ -5,7 +5,6 @@ using UnityEngine;
 public class Hitbox : MonoBehaviour
 {
     private Collider _trigger;
-
     private Action<Collider> _onTrigger;
 
     private void Awake()
