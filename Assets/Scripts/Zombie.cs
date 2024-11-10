@@ -14,6 +14,7 @@ public class Zombie : MonoBehaviour
     [Header("Properties")]
     [SerializeField] private float attackRange = 1.5f;
     [SerializeField] private int attackDamage = 1;
+    [SerializeField] private float hitStuntTime = .5f;
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource attackSound;
@@ -30,6 +31,7 @@ public class Zombie : MonoBehaviour
     private int AnimAttack = Animator.StringToHash("Attack");
     private int AnimDamage = Animator.StringToHash("Damage");
     private int AnimDeath = Animator.StringToHash("Death");
+    private int AnimDeathClip = Animator.StringToHash("DeathClip");
 
     private void Start()
     {
@@ -103,7 +105,7 @@ public class Zombie : MonoBehaviour
         yield return new WaitForEndOfFrame();
         anim.SetBool(AnimDamage, false);
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(hitStuntTime);
 
         // Only resume movement if zombie is still alive
         if (health.IsAlive)
@@ -125,6 +127,7 @@ public class Zombie : MonoBehaviour
             deathSound.Play();
         }
 
+        anim.SetFloat(AnimDeathClip, Random.Range(0, 2));
         anim.SetBool(AnimDeath, true);
         anim.SetBool(AnimDamage, false);
         anim.SetFloat(AnimSpeed, 0);
