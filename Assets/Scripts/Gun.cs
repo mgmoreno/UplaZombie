@@ -5,6 +5,7 @@ public class Gun : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private new Transform camera;
+    [SerializeField] private ParticleSystem muzzleFlash;
     [SerializeField] private AudioSource gunSound;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject impactPrefab;
@@ -51,6 +52,7 @@ public class Gun : MonoBehaviour
 
             gunSound.Play();
             animator.SetBool(AnimFire, true);
+            muzzleFlash.Play();
             Shoot();
         }
     }
