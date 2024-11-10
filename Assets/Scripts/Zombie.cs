@@ -21,15 +21,18 @@ public class Zombie : MonoBehaviour
     [SerializeField] private AudioSource deathSound;
 
     private NavMeshAgent _agent;
+    private Collider _collider;
     private Transform _target;
 
     private int AnimSpeed = Animator.StringToHash("Speed");
     private int AnimAttack = Animator.StringToHash("Attack");
     private int AnimDamage = Animator.StringToHash("Damage");
+    private int AnimDeath = Animator.StringToHash("Death");
 
     private void Start()
     {
         _agent = GetComponent<NavMeshAgent>();
+        _collider = GetComponent<Collider>();
         _target = GameObject.FindGameObjectWithTag("Player").transform;
         hitbox.Initialize(OnHitDetected);        
     }
@@ -51,11 +54,11 @@ public class Zombie : MonoBehaviour
     }
 
     private void Update()
-    {    
-        if (_target == null) { return; }
-        if (health.IsAlive == false) { return; }
-
+    {
         anim.SetBool(AnimAttack, false);
+
+        if (_target == null) { return; }
+        if (health.IsAlive == false) { return; }        
 
         if(Vector3.Distance(transform.position, _target.position) <= attackRange)
         {
@@ -65,8 +68,7 @@ public class Zombie : MonoBehaviour
             if (!attackSound.isPlaying)
             {
                 attackSound.Play();
-            }
-            
+            }            
         }
         else
         {
@@ -100,8 +102,24 @@ public class Zombie : MonoBehaviour
 
     private void OnDeath()
     {
-        deathSound.Play();
-        Destroy(gameObject);
+        StartCoroutine(OnDeathEffect());
+    }
+
+    private IEnumerator OnDeathEffect()
+    {
+        if (!deathSound.isPlaying)
+        {
+            deathSound.Play();
+        }
+
+        anim.SetBool(AnimDeath, true);
+        _agent.enabled = false;
+        _collider.enabled = false;
+        Destroy(gameObject, 2);
+
+        // Wait one frame to reset flag so we don't keep transitioning to death animation
+        yield return new WaitForEndOfFrame();
+        anim.SetBool(AnimDeath, false);
     }
 
     private void AttackStart()
