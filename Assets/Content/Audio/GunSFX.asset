@@ -6,8 +6,8 @@ AudioContainerElement:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Laser_Gun_P1-70_{-5628003509601556732}
-  m_AudioClip: {fileID: 8300000, guid: 5fa4033ad2757cd42ad798547e16baa8, type: 3}
+  m_Name: Laser_Gun_P1-99_{-5628003509601556732}
+  m_AudioClip: {fileID: 8300000, guid: dfa3df782875c8640992ff194b84118b, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1233149941 &-3559320979648388645
@@ -16,8 +16,8 @@ AudioContainerElement:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Laser_Gun_P1-04_{-3559320979648388645}
-  m_AudioClip: {fileID: 8300000, guid: c51de8574445f014996cdff9ff01a125, type: 3}
+  m_Name: Laser_Gun_P1-60_{-3559320979648388645}
+  m_AudioClip: {fileID: 8300000, guid: c7cc9a327130c8944887ff684b673db6, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1233149941 &6260382692771716903
@@ -26,8 +26,8 @@ AudioContainerElement:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Laser_Gun_P1-102_{6260382692771716903}
-  m_AudioClip: {fileID: 8300000, guid: 68cee1ceb04a0b546ae25c3ea5a883de, type: 3}
+  m_Name: Laser_Gun_P1-98_{6260382692771716903}
+  m_AudioClip: {fileID: 8300000, guid: 212b73eaa45cdfc4684a6ec93b9c876d, type: 3}
   m_Volume: 0
   m_Enabled: 1
 --- !u!1307931743 &6418180475301049370
